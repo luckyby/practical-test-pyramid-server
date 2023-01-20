@@ -19,7 +19,7 @@
 
 [//]: # (Open [http://localhost:3010]&#40;http://localhost:3010&#41; with your browser to see the result.)
 
-# REST server for study created on Next.js
+# REST server for study (created on Next.js)
 ### Server has next endpoins:
 
 | method | enpoint                                                                                                 |  description |
