@@ -1,4 +1,5 @@
 import styles from "../styles/Home.module.css";
+import Link from "next/link";
 
 // import fs from "fs";
 
@@ -12,7 +13,7 @@ function Exchange(props) {
       <main className={styles.main}>
         <div className={styles.pagetitle}>
           <h3>
-            <a href="https://bank.gov.ua" className={styles.card2PagesLink}>National Bank of Ukraine</a> exchange rate on {exchangeDate}&nbsp;
+            <Link href="https://bank.gov.ua/ua/open-data/api-dev" className={styles.card2PagesLink}>National Bank of Ukraine exchange rate</Link> on {exchangeDate}&nbsp;
           </h3>
         </div>
         <div className={styles.routesBlock}>
@@ -23,9 +24,9 @@ function Exchange(props) {
           </div>
         </div>
         <div className={styles.mainLink}>
-          <a href="http://localhost:3010/" className={styles.card2PagesLink}>
+          <Link href="/" className={styles.card2PagesLink}>
             <h4>Go to main page</h4>
-          </a>
+          </Link>
         </div>
       </main>
     </div>
@@ -38,9 +39,20 @@ export async function getStaticProps() {
 
   const res = await fetch(url);
   const json = await res.json();
-  const jsonUSD = json["25"]
-  const rateUSD = jsonUSD.rate
-  const exchangeDate = jsonUSD.exchangedate
+  const jsonLength = json.length
+  // console.log('jsonLength = ', jsonLength)
+  let rateUSD = 0
+  let exchangeDate = "08.12.2022"
+  for (let i=0; i<jsonLength; i++){
+    const jsonObjectInJsonArray = json[`${i}`]
+    if(jsonObjectInJsonArray.r030 === 840){
+      rateUSD = jsonObjectInJsonArray.rate
+      exchangeDate = jsonObjectInJsonArray.exchangedate
+    }
+  }
+  // const jsonUSD = json["24"]
+  // const rateUSD = jsonUSD.rate
+  // const exchangeDate = jsonUSD.exchangedate
 
   // async function readJsonFile(fileName) {
   //   const fsPromises = require('fs').promises;

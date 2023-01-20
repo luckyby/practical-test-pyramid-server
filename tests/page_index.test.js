@@ -9,7 +9,7 @@ describe ("server did render main page where", ()=>{
         render(<Home />);
         // const testvar = screen.AllByText
         const allCards = screen.getAllByTestId("cardRemark");
-        expect(allCards.length).toBe(4);
+        expect(allCards.length).toBe(9);
     });
     it("component Header is rendered", ()=>{
         render(<Header tag_1='h3' main_title_1='Welcome to server for testing' tag_2='h2' main_title_2=''/>);

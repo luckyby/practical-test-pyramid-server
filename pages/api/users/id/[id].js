@@ -17,7 +17,7 @@
 
 import {response} from "msw";
 
-export default async (req, res) => {
+const userById = async (req, res) => {
     const { id } = req.query
     // console.log('id:', id)
     const method = req.method;
@@ -186,10 +186,12 @@ export default async (req, res) => {
             }
             break
         default:
-            res.setHeaders("Allow", ["GET", "PATCH", "DELETE"]);
+            res.setHeader("Allow", ["GET", "PATCH", "DELETE"]);
             return res
-                .status(400)
-                .json({ success: false })
-                .end(`Method ${method} Not Allowed`);
+                .status(405)
+                .json({ success: false, "message": `Method ${method} Not Allowed` })
+                // .end(`Method ${method} Not Allowed`);
     }
 }
+
+export default userById

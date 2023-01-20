@@ -1,7 +1,7 @@
 import styles from "../styles/Home.module.css";
 import Head from 'next/head'
-import Card from "../backyard_src/Card";
-import Card2 from "../backyard_src/Card2_v1";
+import Card from "../src_dump/Card";
+import Card2 from "../src_dump/Card2_v1";
 import Card2API from "../components/Card2API";
 import Card2Page from "../components/Card2Page";
 

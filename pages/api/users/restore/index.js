@@ -1,4 +1,4 @@
-export default async (req, res) => {
+const userRestore =  async (req, res) => {
 
     const method = req.method;
     // console.log('method = ', method)
@@ -48,10 +48,12 @@ export default async (req, res) => {
         //         });
         //     }
         default:
-            // res.setHeaders("Allow", ["GET", "POST", "DELETE"]);
+            res.setHeader("Allow", ["GET", "POST", "DELETE"]);
             return res
                 .status(405)
-                .json({ success: false })
-                .end(`Method ${method} Not Allowed`);
+                .json({ success: false, "mesage": `Method ${method} Not Allowed` })
+                // .end(`Method ${method} Not Allowed`);
     }
 }
+
+export default userRestore

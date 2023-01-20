@@ -1,5 +1,5 @@
 
-export default async (req, res) => {
+const users = async (req, res) => {
     // console.log('req = ', req)
     const method = req.method;
     // console.log('typeof method = ', typeof method)
@@ -12,6 +12,7 @@ export default async (req, res) => {
         case "GET":
             try {
                 const url = `http://localhost:4003/api/person`;
+                // const url = `https://next-sqlite-crud-server.vercel.app/api/person`;
 
                 const response = await fetch(url);
                 const json = await response.json();
@@ -48,7 +49,7 @@ export default async (req, res) => {
                     // console.log('resText = ', resText)
                     const resJson = await fetchRes.json()
                     // console.log('resJson = ', resJson)
-                    res.status(200).json([resJson])
+                    res.status(200).json(resJson)
                 }catch (error) {
                     console.log('error:', error)
                 }
@@ -95,11 +96,12 @@ export default async (req, res) => {
             }
             break
         default:
-            // res.setHeaders("Allow", ["GET", "POST", "DELETE"]);
-
+            res.setHeader("Allow", ["GET", "POST", "DELETE"]);
             return res
                 .status(405)
-                .json({ success: false })
+                .json({ success: false, "message": `Method ${method} Not Allowed` })
                 // .end(`Method ${method} Not Allowed`);
     }
 }
+
+export default users
