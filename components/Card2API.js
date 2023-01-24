@@ -125,7 +125,7 @@ const Card2API = (props) => {
     const methodColor = {
         "POST": "#daf1e7",
         "GET": "#d6e7f5",
-        "PATCH": "#f6e6d5",
+        "PUT": "#f6e6d5",
         "DELETE": "#f5d6d8",
     }
 

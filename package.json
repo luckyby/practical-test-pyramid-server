@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "PORT=3010 next dev",
+    "dev": "PORT=$(grep PORT .env.local | cut -d '=' -f2) next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

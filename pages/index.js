@@ -107,11 +107,11 @@ function Home() {
                                     cardid="card5"
                                     path = "/api/users/id/[id]"
                                     id = "1"
-                                    record_method = "PATCH"
+                                    record_method = "PUT"
                                     record_remark = ""
                                     record_text='update one user by id'
                                     cardReqUrl="http://localhost:3010/api/users/id/1"
-                                    cardReqMethod="PATCH"
+                                    cardReqMethod="PUT"
                                     cardReqHeaders={{'Content-Type': 'application/json'}}
                                     cardReqBody={{"firstname":"Peter","lastname":"Parker","role":"spider-man"}}
                                     cardReqRedirect="follow"
@@ -198,11 +198,5 @@ function Home() {
 
 }
 
-export const   getServerSideProps = ()=>{
-    const base_app_url = process.env.BASE_APP_URL
-    return{
-        props: {base_app_url}
-    }
-}
 
 export default Home

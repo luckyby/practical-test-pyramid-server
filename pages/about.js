@@ -1,7 +1,7 @@
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 
-export default function AboutPage() {
+const AboutPage = () => {
   return (
     <div className={styles.mainWrapper}>
 
@@ -39,3 +39,5 @@ export default function AboutPage() {
     </div>
   );
 }
+
+export default AboutPage

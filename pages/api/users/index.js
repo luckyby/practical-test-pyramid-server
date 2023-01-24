@@ -1,25 +1,17 @@
-
-const users = async (req, res) => {
-    // console.log('req = ', req)
+const Users = async (req, res) => {
     const method = req.method;
-    // console.log('typeof method = ', typeof method)
-    // console.log('method in users index = ', method)
     const reqBody = req.body
-    // console.log('reqBody = ', reqBody)
-    // const redir = req._httpMessage
-    // console.log('redir = ', redir)
+
     switch (method) {
         case "GET":
             try {
                 const url = `http://localhost:4003/api/person`;
-                // const url = `https://next-sqlite-crud-server.vercel.app/api/person`;
-
                 const response = await fetch(url);
                 const json = await response.json();
-                // console.log("response.json():", json);
 
                 res.status(200).json(json);
-            } catch (e) {
+            } catch (error) {
+                console.log('error in GET in Users:', error.message)
                 return res.status(400).json({
                     success: false,
                 });
@@ -27,12 +19,8 @@ const users = async (req, res) => {
             break
         case "POST":
             try {
-
                 let myHeaders = new Headers();
                 myHeaders.append("Content-Type", "application/json");
-
-                // const reqBody = req.body
-                // console.log('reqBody = ', reqBody)
 
                 let raw = JSON.stringify(reqBody);
 
@@ -42,29 +30,17 @@ const users = async (req, res) => {
                     body: raw,
                     redirect: 'follow'
                 };
-                // console.log('requestOptions in users index post', requestOptions)
+
                 try {
                     const fetchRes = await fetch("http://localhost:4003/api/person", requestOptions)
-                    // const resText = await fetchRes.text()
-                    // console.log('resText = ', resText)
                     const resJson = await fetchRes.json()
-                    // console.log('resJson = ', resJson)
                     res.status(200).json(resJson)
                 }catch (error) {
-                    console.log('error:', error)
+                    console.log('error in fetch in POST in Users:', error.message)
                 }
-                // fetch("http://localhost:4003/api/person", requestOptions)
-                //     .then(response => {
-                //
-                //         res.status(200).json(response.json())
-                //     })
-                    // .then(result => {
-                    //     console.log('result in POST users index',result)
-                    //     res.status(200).json(result)
-                    // })
-                    // .catch(error => console.log('error', error));
 
-            } catch (e) {
+            } catch (error) {
+                console.log('error in POST in Users:', error.message)
                 return res.status(400).json({
                     success: false,
                 });
@@ -77,19 +53,17 @@ const users = async (req, res) => {
                     method: method,
                     redirect: 'follow'
                 };
-                // console.log('requestOptions in users index post', requestOptions)
                 try {
                     const fetchRes = await fetch("http://localhost:4003/api/person", requestOptions)
-                    // const resText = await fetchRes.text()
-                    // console.log('resText = ', resText)
                     const resJson = await fetchRes.json()
-                    // console.log('resJson = ', resJson)
+
                     res.status(200).json([resJson])
                 }catch (error) {
-                    console.log('error:', error)
+                    console.log('error in fetch in DELETE in Users:', error.message)
                 }
 
-            } catch (e) {
+            } catch (error) {
+                console.log('error in DELETE in Users:', error.message)
                 return res.status(400).json({
                     success: false,
                 });
@@ -100,8 +74,7 @@ const users = async (req, res) => {
             return res
                 .status(405)
                 .json({ success: false, "message": `Method ${method} Not Allowed` })
-                // .end(`Method ${method} Not Allowed`);
     }
 }
 
-export default users
+export default Users
