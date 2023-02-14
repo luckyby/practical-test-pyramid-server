@@ -25,6 +25,7 @@
 yarn.lock
 .eslintrc.json
 .env
+*.*_
 
 # folders
 src_tests_dump/
