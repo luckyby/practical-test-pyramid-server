@@ -277,7 +277,8 @@
 }
 
 .card2PagesLink {
-    /*color: black;*/
+    color: #4f73a9;
+    text-decoration: none;
     text-decoration: underline;
     text-decoration-color: #94A4B8;
     text-decoration-thickness: 2px;
@@ -287,11 +288,16 @@
 .card2PagesLink:hover {
     /*color: #758aa3*/
     /*color: #5c708a*/
-    color: black;
-    text-decoration: underline;
-    text-decoration-color: #fcbc3e;
-    text-decoration-thickness: 2px;
-    -webkit-text-decoration-color: #fcbc3e;
+    /*color: #0f1623;*/
+    color: #ffffff;
+    text-decoration: none;
+    /*text-decoration: underline;*/
+    /*text-decoration-color: #fcbc3e;*/
+    /*text-decoration-thickness: 2px;*/
+    /*-webkit-text-decoration-color: #fcbc3e;*/
+    /*background-color: #e0e0e0;*/
+    /*background-color: #fcbc3e;*/
+    background-color: #657ea1;
     transition: all .3s ease-out;
 }
 
